@@ -12,3 +12,5 @@ source ~/.zshrc
 ![image](https://github.com/user-attachments/assets/012647bc-2340-46d7-9635-8b457169495a)
 ![image](https://github.com/user-attachments/assets/5840e63c-0507-4ecd-9eaa-5425cb1f1b70)
 ![image](https://github.com/user-attachments/assets/512f2e95-1f29-40f0-93d3-3d73c8c2fb1f)
+![image](https://github.com/user-attachments/assets/c9cacdf3-f833-411e-88da-03f27cb30426)
+
