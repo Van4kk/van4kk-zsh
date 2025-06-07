@@ -97,7 +97,38 @@ function update_prompt_components() {
 
   # Git branch display
   if [[ -n "$branch" ]]; then
-    GIT_PROMPT="%F{white}(%F{$git_color}$branch%F{white})%f"
+    git_color="green"  # Default fallback
+
+    # Git branch color logic  
+    if [[ "$branch" == hot* || "$branch" == hotfix* ]]; then
+      git_color="red"
+    elif [[ "$branch" == main || "$branch" == master ]]; then
+      git_color="blue"
+    elif [[ "$branch" == feature* || "$branch" == fix* ]]; then
+      git_color="yellow"
+    fi
+
+    local push_count=0
+    local pull_count=0
+    local sync_status=""
+    local upstream_set=true
+
+    # shows commits status, how many to push or to pull
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+      if git rev-parse --abbrev-ref --symbolic-full-name @{u} > /dev/null 2>&1; then
+        push_count=$(git rev-list --count @{u}..HEAD 2>/dev/null)
+        pull_count=$(git rev-list --count HEAD..@{u} 2>/dev/null)
+
+        [[ "$push_count" -gt 0 ]] && sync_status+=" %F{green}↑$push_count%f"
+        [[ "$pull_count" -gt 0 ]] && sync_status+=" %F{blue}↓$pull_count%f"
+      else
+        # Shows ⚠ no upstream is remote is not set
+        upstream_set=false
+        sync_status+=" %F{red}⚠ no upstream%f"
+      fi
+    fi
+
+    GIT_PROMPT="%F{white}(%F{$git_color}$branch%F{white}$sync_status)%f"
     CMD_INDICATOR=":"
   fi
 
