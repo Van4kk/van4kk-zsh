@@ -113,7 +113,7 @@ function update_prompt_components() {
       else
         # Shows ⚠ no upstream is remote is not set
         upstream_set=false
-        sync_status+=" %F{red}⚠ no upstream%f"
+        sync_status+=" %F{yellow}⚠ no upstream%f"
       fi
     fi
 
