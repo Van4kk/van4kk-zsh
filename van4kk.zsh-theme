@@ -101,6 +101,12 @@ function update_prompt_components() {
     local pull_count=0
     local sync_status=""
     local upstream_set=true
+    local unstaged=""
+
+    # Shows a yellow "*" the there are any unstaged files
+    if git diff --quiet --ignore-submodules --cached && ! git diff --quiet --ignore-submodules; then
+      unstaged="%F{yellow}*%f"
+    fi
 
     # shows commits status, how many to push or to pull
     if git rev-parse --git-dir > /dev/null 2>&1; then
@@ -111,13 +117,13 @@ function update_prompt_components() {
         [[ "$push_count" -gt 0 ]] && sync_status+=" %F{green}↑$push_count%f"
         [[ "$pull_count" -gt 0 ]] && sync_status+=" %F{blue}↓$pull_count%f"
       else
-        # Shows ⚠ no upstream is remote is not set
+        # Shows "⚠ no upstream" if remote is not set
         upstream_set=false
         sync_status+=" %F{yellow}⚠ no upstream%f"
       fi
     fi
 
-    GIT_PROMPT="%F{white}(%F{$git_color}$branch%F{white}$sync_status)%f"
+    GIT_PROMPT="%F{white}(%F{$git_color}$branch%F{white}$unstaged%F{white}$sync_status)%f"
     CMD_INDICATOR=":"
   fi
 
