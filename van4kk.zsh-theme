@@ -105,7 +105,7 @@ function update_prompt_components() {
 
     # Trim branch name if too long
     if (( ${#branch} > 20 )); then
-      branch="${branch:0:17}..."
+      branch="${branch:0:17}.."
     fi
 
     # Shows a yellow "*" the there are any unstaged files
