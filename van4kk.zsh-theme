@@ -103,6 +103,11 @@ function update_prompt_components() {
     local upstream_set=true
     local unstaged=""
 
+    # Trim branch name if too long
+    if (( ${#branch} > 20 )); then
+      branch="${branch:0:17}..."
+    fi
+
     # Shows a yellow "*" the there are any unstaged files
     if git diff --quiet --ignore-submodules --cached && ! git diff --quiet --ignore-submodules; then
       unstaged="%F{yellow}*%f"
