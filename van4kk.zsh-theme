@@ -84,17 +84,6 @@ function update_prompt_components() {
   local CMD_INDICATOR=">"
   local LAST_EXIT_CODE_RAW=$?
 
-  # Git branch color logic
-  if [[ "$branch" == hot* || "$branch" == hotfix* ]]; then
-    git_color="red"
-  elif [[ "$branch" == main || "$branch" == master ]]; then
-    git_color="blue"
-  elif [[ "$branch" == feature* || "$branch" == fix* ]]; then
-    git_color="yellow"
-  elif [[ -n "$branch" ]]; then
-    git_color="green"
-  fi
-
   # Git branch display
   if [[ -n "$branch" ]]; then
     git_color="green"  # Default fallback
