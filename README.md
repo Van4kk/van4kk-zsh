@@ -4,11 +4,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 ```
-- Add the file to `~/.oh-my-zsh/custom/themes/` or run the below command if you want to automatically update to the new version:
-```bash
-git clone https://github.com/van4kk/van4kk-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/van4kk
-```
-- Open `~/.zshrc` and add `ZSH_THEME="van4kk"` or `ZSH_THEME="van4kk/van4kk"`, then run:
 - Add the necessary plugins:
 ```bash
 plugins=(
@@ -19,7 +14,21 @@ plugins=(
     ohmyzsh-full-autoupdate
 )
 ```
-- Then:
+
+## Manual
+```bash
+git clone --depth=1 https://github.com/van4kk/van4kk-zsh.git ~/van4kk
+echo 'source ~/van4kk/van4kk.zsh-theme' >> ~/.zshrc
+```
+- Or add the `van4kk.zsh-theme` the file to `~/.oh-my-zsh/custom/themes/`
+
+## Oh My Zsh
+```bash
+git clone --depth=1 https://github.com/van4kk/van4kk-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/van4kk
+```
+- Open `~/.zshrc` and add `ZSH_THEME="van4kk/van4kk"`
+
+## In the end..
 ```sh
 source ~/.zshrc # or `zsh` if you have the alias set
 ```
