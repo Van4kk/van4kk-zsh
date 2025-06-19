@@ -1,7 +1,27 @@
-- Add the file to `~/.oh-my-zsh/custom/themes/`,
-- Open `~/.zshrc` and add `ZSH_THEME="van4kk"`, then run:
+- Add the necessary plugins:
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
+```
+- Add the file to `~/.oh-my-zsh/custom/themes/` or run the below command if you want to automatically update to the new version:
+```bash
+git clone https://github.com/van4kk/van4kk-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/van4kk
+```
+- Open `~/.zshrc` and add `ZSH_THEME="van4kk"` or `ZSH_THEME="van4kk/van4kk"`, then run:
+- Add the necessary plugins:
+```bash
+plugins=(
+    ...
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    ohmyzsh-full-autoupdate
+)
+```
+- Then:
 ```sh
-source ~/.zshrc
+source ~/.zshrc # or `zsh` if you have the alias set
 ```
 
 ![image](https://github.com/user-attachments/assets/8feeff37-f2cb-475b-ab79-6eef7afd768d)
